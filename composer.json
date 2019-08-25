@@ -1,5 +1,5 @@
 {
-  "name": "bnomei/kirby3-ics",
+  "name": "bnomei/kirby3-qrcode",
   "description": "Generate QRCode Files",
   "type": "kirby-plugin",
   "version": "1.0.0",
@@ -14,11 +14,11 @@
     "kirby3",
     "kirby3-cms",
     "kirby3-plugin",
-    "calendar",
-    "events",
-    "ics",
-    "rfc2445",
-    "rfc5545"
+    "qrcode",
+    "qr-code",
+    "image",
+    "png",
+    "svg"
   ],
   "autoload": {
     "psr-4": {
