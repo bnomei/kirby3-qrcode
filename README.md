@@ -1,6 +1,15 @@
 # Kirby 3 QRCode
 
-![Release](https://img.shields.io/github/release/bnomei/kirby3-qrcode.svg?color=ae81ff&style=flat-square) ![Repo Size](https://img.shields.io/github/repo-size/bnomei/kirby3-qrcode.svg?color=272822&style=flat-square) ![Issues](https://img.shields.io/github/issues/bnomei/kirby3-qrcode?color=e6db74&style=flat-square) [![Build Status](https://img.shields.io/travis/bnomei/kirby3-qrcode?style=flat-square)](https://travis-ci.com/bnomei/kirby3-qrcode)  [![Coverage Status](https://img.shields.io/coveralls/github/bnomei/kirby3-qrcode?style=flat-square)](https://coveralls.io/github/bnomei/kirby3-qrcode) [![Demo](https://img.shields.io/website/https/kirby3-plugins.bnomei.com/qrcode.svg?down_color=%23666&down_message=none&up_color=%23f92672&up_message=Examples&style=flat-square)](https://kirby3-plugins.bnomei.com/qrcode) [![Gitter](https://img.shields.io/gitter/room/bnomei-kirby-3-plugins/community?color=982ab3&style=flat-square)](https://gitter.im/bnomei-kirby-3-plugins/community) [![Twitter](https://img.shields.io/badge/twitter-bnomei-66d9ef.svg?style=flat-square)](https://twitter.com/bnomei)
+![Release](https://flat.badgen.net/packagist/v/bnomei/kirby3-qrcode?color=ae81ff)
+![Stars](https://flat.badgen.net/packagist/ghs/bnomei/kirby3-qrcode?color=272822)
+![Downloads](https://flat.badgen.net/packagist/dt/bnomei/kirby3-qrcode?color=272822)
+![Issues](https://flat.badgen.net/packagist/ghi/bnomei/kirby3-qrcode?color=e6db74)
+[![Build Status](https://flat.badgen.net/travis/bnomei/kirby3-qrcode)](https://travis-ci.com/bnomei/kirby3-qrcode)
+[![Coverage Status](https://flat.badgen.net/coveralls/c/github/bnomei/kirby3-qrcode)](https://coveralls.io/github/bnomei/kirby3-qrcode) 
+[![Demo](https://flat.badgen.net/badge/website/examples?color=f92672)](https://kirby3-plugins.bnomei.com/autoid) 
+[![Gitter](https://flat.badgen.net/badge/gitter/chat?color=982ab3)](https://gitter.im/bnomei-kirby-3-plugins/community) 
+[![Twitter](https://flat.badgen.net/badge/twitter/bnomei?color=66d9ef)](https://twitter.com/bnomei)
+
 
 @@@TODO@@@
 
