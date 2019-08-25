@@ -4,7 +4,7 @@
 
 namespace Composer\Autoload;
 
-class ComposerStaticInit98d1d0720afa3e000a58b49a7396aa4e
+class ComposerStaticInit1915a20edd3405325d00d717a8c4aadf
 {
     public static $files = array (
         '0e6d7bf4a5811bfa5cf40c5ccd6fae6a' => __DIR__ . '/..' . '/symfony/polyfill-mbstring/bootstrap.php',
@@ -12,7 +12,6 @@ class ComposerStaticInit98d1d0720afa3e000a58b49a7396aa4e
         '320cde22f66dd4f5d3fd621d3e88b98f' => __DIR__ . '/..' . '/symfony/polyfill-ctype/bootstrap.php',
         'f598d06aa772fa33d905e87be6398fb1' => __DIR__ . '/..' . '/symfony/polyfill-intl-idn/bootstrap.php',
         'a9ed0d27b5a698798a89181429f162c5' => __DIR__ . '/..' . '/khanamiryan/qrcode-detector-decoder/lib/Common/customFunctions.php',
-        '47b18101462cdeb25f661813113e3182' => __DIR__ . '/..' . '/kigkonsult/icalcreator/autoload.php',
     );
 
     public static $prefixLengthsPsr4 = array (
@@ -39,7 +38,6 @@ class ComposerStaticInit98d1d0720afa3e000a58b49a7396aa4e
         'K' => 
         array (
             'Kirby\\' => 6,
-            'Kigkonsult\\Icalcreator\\' => 23,
         ),
         'E' => 
         array (
@@ -105,12 +103,6 @@ class ComposerStaticInit98d1d0720afa3e000a58b49a7396aa4e
         'Kirby\\' => 
         array (
             0 => __DIR__ . '/..' . '/getkirby/composer-installer/src',
-        ),
-        'Kigkonsult\\Icalcreator\\' => 
-        array (
-            0 => __DIR__ . '/..' . '/kigkonsult/icalcreator/src',
-            1 => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Util',
-            2 => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits',
         ),
         'Endroid\\QrCode\\' => 
         array (
@@ -233,84 +225,6 @@ class ComposerStaticInit98d1d0720afa3e000a58b49a7396aa4e
         'Endroid\\QrCode\\Writer\\PngWriter' => __DIR__ . '/..' . '/endroid/qr-code/src/Writer/PngWriter.php',
         'Endroid\\QrCode\\Writer\\SvgWriter' => __DIR__ . '/..' . '/endroid/qr-code/src/Writer/SvgWriter.php',
         'Endroid\\QrCode\\Writer\\WriterInterface' => __DIR__ . '/..' . '/endroid/qr-code/src/Writer/WriterInterface.php',
-        'Kigkonsult\\Icalcreator\\CalendarComponent' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/CalendarComponent.php',
-        'Kigkonsult\\Icalcreator\\Daylight' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Daylight.php',
-        'Kigkonsult\\Icalcreator\\IcalBase' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/IcalBase.php',
-        'Kigkonsult\\Icalcreator\\IcalInterface' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/IcalInterface.php',
-        'Kigkonsult\\Icalcreator\\Standard' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Standard.php',
-        'Kigkonsult\\Icalcreator\\Traits\\ACTIONtrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/ACTIONtrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\ATTACHtrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/ATTACHtrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\ATTENDEEtrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/ATTENDEEtrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\CALSCALEtrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/CALSCALEtrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\CATEGORIEStrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/CATEGORIEStrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\CLASStrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/CLASStrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\COMMENTtrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/COMMENTtrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\COMPLETEDtrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/COMPLETEDtrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\CONTACTtrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/CONTACTtrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\CREATEDtrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/CREATEDtrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\DESCRIPTIONtrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/DESCRIPTIONtrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\DTENDtrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/DTENDtrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\DTSTAMPtrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/DTSTAMPtrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\DTSTARTtrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/DTSTARTtrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\DUEtrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/DUEtrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\DURATIONtrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/DURATIONtrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\EXDATEtrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/EXDATEtrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\EXRULEtrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/EXRULEtrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\FREEBUSYtrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/FREEBUSYtrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\GEOtrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/GEOtrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\LAST_MODIFIEDtrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/LAST_MODIFIEDtrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\LOCATIONtrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/LOCATIONtrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\METHODtrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/METHODtrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\ORGANIZERtrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/ORGANIZERtrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\PERCENT_COMPLETEtrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/PERCENT_COMPLETEtrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\PRIORITYtrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/PRIORITYtrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\PRODIDtrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/PRODIDtrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\RDATEtrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/RDATEtrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\RECURRENCE_IDtrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/RECURRENCE_IDtrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\RELATED_TOtrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/RELATED_TOtrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\REPEATtrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/REPEATtrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\REQUEST_STATUStrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/REQUEST_STATUStrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\RESOURCEStrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/RESOURCEStrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\RRULEtrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/RRULEtrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\SEQUENCEtrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/SEQUENCEtrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\STATUStrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/STATUStrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\SUMMARYtrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/SUMMARYtrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\TRANSPtrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/TRANSPtrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\TRIGGERtrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/TRIGGERtrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\TZIDtrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/TZIDtrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\TZNAMEtrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/TZNAMEtrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\TZOFFSETFROMtrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/TZOFFSETFROMtrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\TZOFFSETTOtrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/TZOFFSETTOtrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\TZURLtrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/TZURLtrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\UIDtrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/UIDtrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\URLtrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/URLtrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\VERSIONtrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/VERSIONtrait.php',
-        'Kigkonsult\\Icalcreator\\Traits\\X_PROPtrait' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Traits/X_PROPtrait.php',
-        'Kigkonsult\\Icalcreator\\Util\\CalAddressFactory' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Util/CalAddressFactory.php',
-        'Kigkonsult\\Icalcreator\\Util\\DateIntervalFactory' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Util/DateIntervalFactory.php',
-        'Kigkonsult\\Icalcreator\\Util\\DateTimeFactory' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Util/DateTimeFactory.php',
-        'Kigkonsult\\Icalcreator\\Util\\DateTimeZoneFactory' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Util/DateTimeZoneFactory.php',
-        'Kigkonsult\\Icalcreator\\Util\\GeoFactory' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Util/GeoFactory.php',
-        'Kigkonsult\\Icalcreator\\Util\\HttpFactory' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Util/HttpFactory.php',
-        'Kigkonsult\\Icalcreator\\Util\\IcalXMLFactory' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Util/IcalXMLFactory.php',
-        'Kigkonsult\\Icalcreator\\Util\\IcalvCardFactory' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Util/IcalvCardFactory.php',
-        'Kigkonsult\\Icalcreator\\Util\\ParameterFactory' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Util/ParameterFactory.php',
-        'Kigkonsult\\Icalcreator\\Util\\RecurFactory' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Util/RecurFactory.php',
-        'Kigkonsult\\Icalcreator\\Util\\RexdateFactory' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Util/RexdateFactory.php',
-        'Kigkonsult\\Icalcreator\\Util\\SelectFactory' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Util/SelectFactory.php',
-        'Kigkonsult\\Icalcreator\\Util\\SortFactory' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Util/SortFactory.php',
-        'Kigkonsult\\Icalcreator\\Util\\StringFactory' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Util/StringFactory.php',
-        'Kigkonsult\\Icalcreator\\Util\\Util' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Util/Util.php',
-        'Kigkonsult\\Icalcreator\\Util\\UtilDateTime' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Util/UtilDateTime.php',
-        'Kigkonsult\\Icalcreator\\Valarm' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Valarm.php',
-        'Kigkonsult\\Icalcreator\\Vcalendar' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Vcalendar.php',
-        'Kigkonsult\\Icalcreator\\Vcomponent' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Vcomponent.php',
-        'Kigkonsult\\Icalcreator\\VetComponent' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/VetComponent.php',
-        'Kigkonsult\\Icalcreator\\Vevent' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Vevent.php',
-        'Kigkonsult\\Icalcreator\\Vfreebusy' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Vfreebusy.php',
-        'Kigkonsult\\Icalcreator\\Vjournal' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Vjournal.php',
-        'Kigkonsult\\Icalcreator\\Vtimezone' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Vtimezone.php',
-        'Kigkonsult\\Icalcreator\\Vtodo' => __DIR__ . '/..' . '/kigkonsult/icalcreator/src/Vtodo.php',
         'Kirby\\ComposerInstaller\\CmsInstaller' => __DIR__ . '/..' . '/getkirby/composer-installer/src/ComposerInstaller/CmsInstaller.php',
         'Kirby\\ComposerInstaller\\Installer' => __DIR__ . '/..' . '/getkirby/composer-installer/src/ComposerInstaller/Installer.php',
         'Kirby\\ComposerInstaller\\Plugin' => __DIR__ . '/..' . '/getkirby/composer-installer/src/ComposerInstaller/Plugin.php',
@@ -552,9 +466,9 @@ class ComposerStaticInit98d1d0720afa3e000a58b49a7396aa4e
     public static function getInitializer(ClassLoader $loader)
     {
         return \Closure::bind(function () use ($loader) {
-            $loader->prefixLengthsPsr4 = ComposerStaticInit98d1d0720afa3e000a58b49a7396aa4e::$prefixLengthsPsr4;
-            $loader->prefixDirsPsr4 = ComposerStaticInit98d1d0720afa3e000a58b49a7396aa4e::$prefixDirsPsr4;
-            $loader->classMap = ComposerStaticInit98d1d0720afa3e000a58b49a7396aa4e::$classMap;
+            $loader->prefixLengthsPsr4 = ComposerStaticInit1915a20edd3405325d00d717a8c4aadf::$prefixLengthsPsr4;
+            $loader->prefixDirsPsr4 = ComposerStaticInit1915a20edd3405325d00d717a8c4aadf::$prefixDirsPsr4;
+            $loader->classMap = ComposerStaticInit1915a20edd3405325d00d717a8c4aadf::$classMap;
 
         }, null, ClassLoader::class);
     }

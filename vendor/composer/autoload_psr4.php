@@ -18,7 +18,6 @@ return array(
     'Symfony\\Component\\HttpFoundation\\' => array($vendorDir . '/symfony/http-foundation'),
     'MyCLabs\\Enum\\' => array($vendorDir . '/myclabs/php-enum/src'),
     'Kirby\\' => array($vendorDir . '/getkirby/composer-installer/src'),
-    'Kigkonsult\\Icalcreator\\' => array($vendorDir . '/kigkonsult/icalcreator/src', $vendorDir . '/kigkonsult/icalcreator/src/Util', $vendorDir . '/kigkonsult/icalcreator/src/Traits'),
     'Endroid\\QrCode\\' => array($vendorDir . '/endroid/qr-code/src'),
     'Endroid\\Installer\\' => array($vendorDir . '/endroid/installer/src'),
     'DASPRiD\\Enum\\' => array($vendorDir . '/dasprid/enum/src'),

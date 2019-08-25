@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#installing-dependencies",
         "This file is @generated automatically"
     ],
-    "content-hash": "1522b16ba0a96d79b2ce44aff30dda41",
+    "content-hash": "86694dc26043378b02365109b805fd28",
     "packages": [
         {
             "name": "bacon/bacon-qr-code",
@@ -287,72 +287,6 @@
                 "zxing"
             ],
             "time": "2018-04-26T11:41:33+00:00"
-        },
-        {
-            "name": "kigkonsult/icalcreator",
-            "version": "v2.27.21",
-            "source": {
-                "type": "git",
-                "url": "https://github.com/iCalcreator/iCalcreator.git",
-                "reference": "d3bcc3b0438b96952ef61ab3310e0c84ad610d11"
-            },
-            "dist": {
-                "type": "zip",
-                "url": "https://api.github.com/repos/iCalcreator/iCalcreator/zipball/d3bcc3b0438b96952ef61ab3310e0c84ad610d11",
-                "reference": "d3bcc3b0438b96952ef61ab3310e0c84ad610d11",
-                "shasum": ""
-            },
-            "require": {
-                "ext-openssl": "*",
-                "ext-simplexml": "*",
-                "ext-zlib": "*",
-                "php": ">=5.6"
-            },
-            "require-dev": {
-                "phpunit/phpunit": "6.5.13"
-            },
-            "type": "library",
-            "autoload": {
-                "files": [
-                    "autoload.php"
-                ],
-                "psr-4": {
-                    "Kigkonsult\\Icalcreator\\": [
-                        "src/",
-                        "src/Util/",
-                        "src/Traits/"
-                    ]
-                }
-            },
-            "notification-url": "https://packagist.org/downloads/",
-            "license": [
-                "LGPL-3.0-or-later"
-            ],
-            "authors": [
-                {
-                    "name": "Kjell-Inge Gustafsson",
-                    "email": "ical@kigkonsult.se"
-                }
-            ],
-            "description": "iCalcreator is the PHP implementation of rfc2445/rfc5545, management of calendar information",
-            "homepage": "https://kigkonsult.se",
-            "keywords": [
-                "calendar",
-                "daylight",
-                "management",
-                "rfc2445",
-                "rfc5545",
-                "rfc6321",
-                "standard",
-                "vCalendar",
-                "valarm",
-                "vevent",
-                "vfreebusy",
-                "vjournal",
-                "vtimezone",
-                "vtodo"
-            ],
-            "time": "2019-05-25T00:00:00+00:00"
         },
         {
             "name": "myclabs/php-enum",
