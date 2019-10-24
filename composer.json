@@ -1,6 +1,6 @@
 {
   "name": "bnomei/kirby3-qrcode",
-  "description": "Generate QRCode Files",
+  "description": "Generate QRCodes",
   "type": "kirby-plugin",
   "version": "1.0.0",
   "license": "MIT",
@@ -17,6 +17,7 @@
     "qrcode",
     "qr-code",
     "image",
+    "jpg",
     "png",
     "svg"
   ],
@@ -51,13 +52,18 @@
     "dist": [
       "composer install --no-dev --optimize-autoloader",
       "git rm -rf --cached .; git add .;"
+    ],
+    "kirby": [
+      "composer install",
+      "composer update",
+      "composer install --working-dir=tests/kirby --no-dev --optimize-autoloader",
+      "composer update --working-dir=tests/kirby"
     ]
   },
   "extra": {
     "kirby-cms-path": "tests/kirby"
   },
   "suggest": {
-    "sylvainjule/kirby-previews": "Preview QRCode inside the structure field",
     "bnomei/kirby3-janitor": "Provides tools to add a custom Panel button to trigger download of ICS/CSV/QRCode Files"
   }
 }
