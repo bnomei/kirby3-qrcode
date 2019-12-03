@@ -1,6 +1,31 @@
 CHANGELOG
 =========
 
+5.0.0
+-----
+
+ * made `Cookie` auto-secure and lax by default
+ * removed classes in the `MimeType` namespace, use the Symfony Mime component instead
+ * removed method `UploadedFile::getClientSize()` and the related constructor argument
+ * made `Request::getSession()` throw if the session has not been set before
+ * removed `Response::HTTP_RESERVED_FOR_WEBDAV_ADVANCED_COLLECTIONS_EXPIRED_PROPOSAL`
+ * passing a null url when instantiating a `RedirectResponse` is not allowed
+
+4.4.0
+-----
+
+ * passing arguments to `Request::isMethodSafe()` is deprecated.
+ * `ApacheRequest` is deprecated, use the `Request` class instead.
+ * passing a third argument to `HeaderBag::get()` is deprecated, use method `all()` instead
+ * [BC BREAK] `PdoSessionHandler` with MySQL changed the type of the lifetime column,
+   make sure to run `ALTER TABLE sessions MODIFY sess_lifetime INTEGER UNSIGNED NOT NULL` to
+   update your database.
+ * `PdoSessionHandler` now precalculates the expiry timestamp in the lifetime column,
+    make sure to run `CREATE INDEX EXPIRY ON sessions (sess_lifetime)` to update your database
+    to speed up garbage collection of expired sessions.
+ * added `SessionHandlerFactory` to create session handlers with a DSN
+ * added `IpUtils::anonymize()` to help with GDPR compliance.
+
 4.3.0
 -----
 

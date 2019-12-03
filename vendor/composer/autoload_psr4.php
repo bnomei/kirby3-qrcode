@@ -19,7 +19,6 @@ return array(
     'MyCLabs\\Enum\\' => array($vendorDir . '/myclabs/php-enum/src'),
     'Kirby\\' => array($vendorDir . '/getkirby/composer-installer/src'),
     'Endroid\\QrCode\\' => array($vendorDir . '/endroid/qr-code/src'),
-    'Endroid\\Installer\\' => array($vendorDir . '/endroid/installer/src'),
     'DASPRiD\\Enum\\' => array($vendorDir . '/dasprid/enum/src'),
     'Bnomei\\' => array($baseDir . '/classes'),
     'BaconQrCode\\' => array($vendorDir . '/bacon/bacon-qr-code/src'),
