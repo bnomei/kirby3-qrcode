@@ -72,13 +72,14 @@ final class QRCode
      */
     public function download(string $name)
     {
+        // @codeCoverageIgnoreStart
+        $extension = pathinfo($name, PATHINFO_EXTENSION);
+        $this->qrCode->setWriterByExtension($extension);
+
         Header::download([
             'mime' => $this->qrCode->getContentType(),
             'name' => $name,
         ]);
-        // @codeCoverageIgnoreStart
-        $extension = pathinfo($name, PATHINFO_EXTENSION);
-        $this->qrCode->setWriterByExtension($extension);
         echo $this->qrCode->writeString();
         // @codeCoverageIgnoreEnd
     }

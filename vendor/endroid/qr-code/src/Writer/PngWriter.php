@@ -37,20 +37,19 @@ class PngWriter extends AbstractWriter
 
         $string = $this->imageToString($image);
 
+        imagedestroy($image);
+
         if ($qrCode->getValidateResult()) {
             $reader = new QrReader($string, QrReader::SOURCE_TYPE_BLOB);
             if ($reader->text() !== $qrCode->getText()) {
-                throw new ValidationException(
-                    'Built-in validation reader read "'.$reader->text().'" instead of "'.$qrCode->getText().'".
-                     Adjust your parameters to increase readability or disable built-in validation.'
-                );
+                throw new ValidationException('Built-in validation reader read "'.$reader->text().'" instead of "'.$qrCode->getText().'".
+                     Adjust your parameters to increase readability or disable built-in validation.');
             }
         }
 
         return $string;
     }
 
-    /** @return resource */
     private function createImage(array $data, QrCodeInterface $qrCode)
     {
         $baseSize = $qrCode->getRoundBlockSize() ? $data['block_size'] : 25;
@@ -58,10 +57,11 @@ class PngWriter extends AbstractWriter
         $baseImage = $this->createBaseImage($baseSize, $data, $qrCode);
         $interpolatedImage = $this->createInterpolatedImage($baseImage, $data, $qrCode);
 
+        imagedestroy($baseImage);
+
         return $interpolatedImage;
     }
 
-    /** @return resource */
     private function createBaseImage(int $baseSize, array $data, QrCodeInterface $qrCode)
     {
         $image = imagecreatetruecolor($data['block_count'] * $baseSize, $data['block_count'] * $baseSize);
@@ -85,11 +85,6 @@ class PngWriter extends AbstractWriter
         return $image;
     }
 
-    /**
-     * @param resource $baseImage
-     *
-     * @return resource
-     */
     private function createInterpolatedImage($baseImage, array $data, QrCodeInterface $qrCode)
     {
         $image = imagecreatetruecolor($data['outer_width'], $data['outer_height']);
@@ -106,11 +101,6 @@ class PngWriter extends AbstractWriter
         return $image;
     }
 
-    /**
-     * @param resource $sourceImage
-     *
-     * @return resource
-     */
     private function addLogo($sourceImage, string $logoPath, int $logoWidth = null, int $logoHeight = null)
     {
         $mimeType = $this->getMimeType($logoPath);
@@ -141,14 +131,11 @@ class PngWriter extends AbstractWriter
 
         imagecopyresampled($sourceImage, $logoImage, intval($logoX), intval($logoY), 0, 0, $logoWidth, $logoHeight, $logoSourceWidth, $logoSourceHeight);
 
+        imagedestroy($logoImage);
+
         return $sourceImage;
     }
 
-    /**
-     * @param resource $sourceImage
-     *
-     * @return resource
-     */
     private function addLabel($sourceImage, string $label, string $labelFontPath, int $labelFontSize, string $labelAlignment, array $labelMargin, array $foregroundColor, array $backgroundColor)
     {
         if (!function_exists('imagettfbbox')) {
@@ -178,6 +165,8 @@ class PngWriter extends AbstractWriter
         // Copy source image to target image
         imagecopyresampled($targetImage, $sourceImage, 0, 0, 0, 0, $sourceWidth, $sourceHeight, $sourceWidth, $sourceHeight);
 
+        imagedestroy($sourceImage);
+
         switch ($labelAlignment) {
             case LabelAlignment::LEFT:
                 $labelX = $labelMargin['l'];
@@ -196,9 +185,6 @@ class PngWriter extends AbstractWriter
         return $targetImage;
     }
 
-    /**
-     * @param resource $image
-     */
     private function imageToString($image): string
     {
         ob_start();
