@@ -7,7 +7,7 @@
 [![Maintainability](https://flat.badgen.net/codeclimate/maintainability/bnomei/kirby3-qrcode)](https://codeclimate.com/github/bnomei/kirby3-qrcode) 
 [![Twitter](https://flat.badgen.net/badge/twitter/bnomei?color=66d9ef)](https://twitter.com/bnomei)
 
-Generate QRCodes easily.
+Generate QRCodes easily. The included Panel-Field will show the QRCode and trigger download on click.
 
 ## Commercial Usage
 
@@ -55,23 +55,47 @@ $page->qrcode()->download(
 
 ### Further customization of the generated image
 
-[Advanced options](https://github.com/endroid/qr-code#advanced-usage) can be set.
+[Advanced options](https://github.com/endroid/qr-code#usage-using-the-builder) can be set.
 ```php
 echo $page->qrcode([
-    'Margin' => 10,
-    'Encoding' => 'UTF-8',
-    'ForegroundColor' => ['r' => 0, 'g' => 0, 'b' => 0, 'a' => 0],
-    'BackgroundColor' => ['r' => 255, 'g' => 255, 'b' => 255, 'a' > 0]),
-    'Label' => ['Scan the code', 16, __DIR__.'/../assets/fons/noto_sans.otf', LabelAlignment::CENTER];
-    'LogoPath' => __DIR__.'/../assets/images/getkirby.png',
-    'LogoSize' => [150, 200],
-    'RoundBlockSize' => true,
+    'margin' => 10,
+    'encoding' => 'UTF-8',
+    'foregroundColor' => new \Endroid\QrCode\Color\Color(0, 0, 0),
+    'fackgroundColor' => new \Endroid\QrCode\Color\Color(255, 255, 255),
+    'labelText' => 'Scan the code',
+    'logoPath' => __DIR__.'/../assets/images/getkirby.png',
+    'size' => 200,
 ])->html(
     $page->slug() . '.png'
 );
 ```
 
-> Attention: In this plugin options are single value or an array.
+## Panel Field: Url of Page/File as QRCode
+
+Add the field to a blueprint. This will show the QRCode as PNG image and will trigger the download of the file on click.
+
+**site/blueprints/default.yml**
+```yml
+fields:
+  qrcode: qrcode
+```
+
+You can define the options for the field in your config file. Example:
+
+**site/config/config.php**
+```php
+<?php
+
+return [
+    // other options
+    'bnomei.qrcode.field' => [
+        'foregroundColor' => new \Endroid\QrCode\Color\Color(126, 154, 191),
+        'backgroundColor' => new \Endroid\QrCode\Color\Color(239, 239, 239),
+        'size' => 128,
+        'margin' => 0,
+    ],
+];
+```
 
 ## Dependencies
 

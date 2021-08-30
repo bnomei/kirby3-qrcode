@@ -3,11 +3,14 @@
 .idea
 *.cache
 
+/node_modules
+
 /tests/kirby
 /tests/logs
 /tests/media
 /tests/site/accounts
 /tests/site/cache
+/tests/site/sessions
 
 # files of Composer dependencies that are not needed for the plugin
 /vendor/**/.*

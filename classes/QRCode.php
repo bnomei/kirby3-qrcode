@@ -4,13 +4,17 @@ declare(strict_types=1);
 
 namespace Bnomei;
 
+use Kirby\Cms\File;
 use Kirby\Cms\Html;
+use Kirby\Cms\Page;
+use Kirby\Cms\User;
 use Kirby\Http\Header;
 use Kirby\Toolkit\A;
+use Kirby\Toolkit\Str;
 
 final class QRCode
 {
-    /** @var \Endroid\QrCode\QrCode */
+    /** @var \Endroid\QrCode\Builder\Builder */
     private $qrCode;
 
     /** @var array */
@@ -24,21 +28,16 @@ final class QRCode
     {
         $this->options = $options;
 
+        $this->qrCode = \Endroid\QrCode\Builder\Builder::create();
+        
         $text = A::get($this->options, 'Text');
-        $this->qrCode = new \Endroid\QrCode\QrCode($text);
+        $this->qrCode->data($text);
 
         foreach ($options as $option => $value) {
-            $setterName = 'set' . $option;
-            if ($option === 'Text' || method_exists($this->qrCode, $setterName) === false) {
+            if (method_exists($this->qrCode, $option) === false) {
                 continue;
             }
-
-            if (in_array($option, ['Label', 'LogoSize'])) {
-                // call function with params instead of array
-                call_user_func_array([$this->qrCode, $setterName], $value);
-            } else {
-                $this->qrCode->{$setterName}($value);
-            }
+            $this->qrCode->{$option}($value);
         }
     }
 
@@ -58,11 +57,13 @@ final class QRCode
      */
     public function html(string $name, array $attrs = []): string
     {
-        $extension = pathinfo($name, PATHINFO_EXTENSION);
-        $this->qrCode->setWriterByExtension($extension);
-        $data = $this->qrCode->writeString();
+        $extension = ucfirst(pathinfo($name, PATHINFO_EXTENSION));
+        $class = 'Endroid\\QrCode\\Writer\\' . $extension . 'Writer';
+        $this->qrCode->writer(new $class());
+
+        $result = $this->qrCode->build();
         return Html::tag('img', null, array_merge($attrs, [
-            'src' => 'data:image/' . $extension . ';base64,' . base64_encode($data)
+            'src' => $result->getDataUri()
         ]));
     }
 
@@ -73,14 +74,49 @@ final class QRCode
     public function download(string $name)
     {
         // @codeCoverageIgnoreStart
-        $extension = pathinfo($name, PATHINFO_EXTENSION);
-        $this->qrCode->setWriterByExtension($extension);
+        $extension = ucfirst(pathinfo($name, PATHINFO_EXTENSION));
+        $class = 'Endroid\\QrCode\\Writer\\' . $extension . 'Writer';
+        $this->qrCode->writer(new $class());
+
+        $result = $this->qrCode->build();
 
         Header::download([
-            'mime' => $this->qrCode->getContentType(),
+            'mime' => $result->getMimeType(),
             'name' => $name,
         ]);
-        echo $this->qrCode->writeString();
+        echo $result->getString();
         // @codeCoverageIgnoreEnd
+    }
+
+    /**
+     * @param string|null $template
+     * @param mixed|null $model
+     * @return string
+     */
+    public static function query(string $template = null, $model = null): string
+    {
+        $page = null;
+        $file = null;
+        $user = kirby()->user();
+        if ($model && $model instanceof Page) {
+            $page = $model;
+        } elseif ($model && $model instanceof File) {
+            $file = $model;
+        } elseif ($model && $model instanceof User) {
+            $user = $model;
+        }
+        return Str::template($template, [
+            'kirby' => kirby(),
+            'site' => kirby()->site(),
+            'page' => $page,
+            'file' => $file,
+            'user' => $user,
+            'model' => $model ? get_class($model) : null,
+        ]);
+    }
+
+    public static function hashForApiCall(string $id): string
+    {
+        return sha1(__DIR__ . 'qrcode' . $id . date('ymd'));
     }
 }

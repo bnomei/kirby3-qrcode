@@ -29,7 +29,7 @@ final class QRCodeTest extends TestCase
             'Text' => $this->text,
         ]);
 
-        $this->assertInstanceOf(\Endroid\QrCode\QrCode::class, $qrcode->qrcode());
+        $this->assertInstanceOf(\Endroid\QrCode\Builder\Builder::class, $qrcode->qrcode());
     }
 
     public function testHtml()
@@ -40,7 +40,7 @@ final class QRCodeTest extends TestCase
         $html = $qrcode->html('qrcode.png', [
             'alt' => 'example qr code',
         ]);
-        $this->assertRegExp('/^<img alt="example qr code" src="data:image\/png;base64,.*">$/', $html);
+        $this->assertMatchesRegularExpression('/^<img alt="example qr code" src="data:image\/png;base64,.*">$/', $html);
     }
 
     public function testDownload()
@@ -62,6 +62,6 @@ final class QRCodeTest extends TestCase
         $html = $qrcode->html('qrcode.png', [
             'alt' => 'example qr code',
         ]);
-        $this->assertRegExp('/^<img alt="example qr code" src="data:image\/png;base64,.*">$/', $html);
+        $this->assertMatchesRegularExpression('/^<img alt="example qr code" src="data:image\/png;base64,.*">$/', $html);
     }
 }
