@@ -9,3 +9,14 @@ columns:
     type: fields
     fields:
       qrcode: qrcode
+
+      homeqrcode:
+        type: qrcode
+        title: Home # hardcoded title below figure (not the slug/filename)
+        url: home # an uri, slug will be slug/filename from model
+
+      issuesevenqrcode:
+        type: qrcode
+        title: "Issue #7"
+        url: "https://github.com/bnomei/kirby3-qrcode/issues/7|Issue #7"
+

@@ -2,7 +2,7 @@
   "name": "bnomei/kirby3-qrcode",
   "description": "Generate QRCodes. The included Panel-Field will show the QRCode and trigger download on click.",
   "type": "kirby-plugin",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "license": "MIT",
   "authors": [
     {

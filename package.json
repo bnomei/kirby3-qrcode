@@ -1,6 +1,6 @@
 {
   "name": "kirby-field-qrcode",
-  "version": "2.0.2",
+  "version": "2.0.3",
   "description": "Kirby 3 Plugin QRCode",
   "author": "Bruno Meilick <b@bnomei.com>",
   "scripts": {
@@ -13,6 +13,7 @@
     "babel-core": "^6.26.3",
     "babel-preset-env": "^1.7.0",
     "cssnano": "^4.1.10",
+    "sass": "^1.38.2",
     "vue-template-compiler": "^2.6.10"
   },
   "dependencies": {

@@ -2,6 +2,8 @@
 
 @include_once __DIR__ . '/vendor/autoload.php';
 
+use Kirby\Cms\App as Kirby;
+
 Kirby::plugin('bnomei/qrcode', [
     'options' => [
         'field' => [
@@ -16,41 +18,83 @@ Kirby::plugin('bnomei/qrcode', [
     'fields' => [
         'qrcode' => [
             'props' => [
-                'image' => function (?string $data = null) {
-                    return $this->model()->qrcode(option('bnomei.qrcode.field', []))
-                        ->html($this->model()->slug() . '.png');
+                'title' => function (?string $title = null) {
+                    return \Bnomei\QRCode::query($title, $this->model());
                 },
-                'url' => function (?string $data = null) {
-                    $model = $this->model();
-                    $id = str_replace(
-                        '/',
-                        '+S_L_A_S_H+',
-                        is_a($model, \Kirby\Cms\Site::class) ? '$' : $model->uri()
+                'url' => function (?string $url = null) {
+                    $slug = null;
+                    if ($url) {
+                        if (strpos($url, "|") !== false) {
+                            list($url, $slug) = explode("|", $url);
+                        }
+                        if ($page = page($url)) {
+                            $url = $page->url();
+                            if (empty($slug)) {
+                                $slug = $page->slug();
+                            }
+                        }
+                        if (empty($slug)) {
+                            $slug = $url;
+                        }
+                        $slug = \Bnomei\QRCode::query($slug, $this->model());
+                        $slug = \Kirby\Toolkit\Str::slug($slug);
+                    } else {
+                        $model = $this->model();
+                        if (is_a($model, \Kirby\Cms\Site::class)) {
+                            $url = "$";
+                            $slug = \Kirby\Toolkit\Str::slug(site()->title());
+                        } else {
+                            $url = $model->uri();
+                            $slug = $model->slug();
+                        }
+                    }
+
+                    $hash = \Bnomei\QRCode::hashForApiCall($url);
+                    $options = array_merge(
+                        ['Text' => $url,],
+                        option('bnomei.qrcode.field', [])
                     );
-                    
-                    return site()->url() . '/plugin-qrcode/' . urlencode($id) . '/' . \Bnomei\QRCode::hashForApiCall($id);
+                    $image = $this->model()
+                        ->qrcode($options)
+                        ->html($slug . '.png');
+                    $url = str_replace('/', '+S_L_A_S_H+', $url);
+                    $api = implode('/', [
+                        site()->url(),
+                        'plugin-qrcode',
+                        urlencode($url),
+                        $slug,
+                        $hash
+                    ]);
+
+                    return '<a href="' . $api . '" download>' . $image . '</a>';
                 },
             ],
         ],
     ],
     'routes' => [
         [
-            'pattern' => 'plugin-qrcode/(:any)/(:any)',
-            'action' => function (string $id, string $secret) {
-                $id = str_replace(
-                    '+S_L_A_S_H+',
-                    '/',
-                    urldecode($id)
-                );
-                $hash = \Bnomei\QRCode::hashForApiCall($id);
-                if ($hash === $secret && $id == '$') {
-                    site()->qrcode(option('bnomei.qrcode.field', []))->download(
-                        Str::slug(site()->title()) . '.png'
-                    );
+            'pattern' => 'plugin-qrcode/(:any)/(:any)/(:any)',
+            'action' => function (string $url, string $slug, string $secret) {
+                $url = str_replace('+S_L_A_S_H+', '/', urldecode($url));
+                $hash = \Bnomei\QRCode::hashForApiCall($url);
+                if ($hash !== $secret) {
+                    return;
                 }
-                else if ($hash === $secret && $page = page($id)) {
+                if ($url == '$') {
+                    site()->qrcode(option('bnomei.qrcode.field', []))->download(
+                        \Kirby\Toolkit\Str::slug(site()->title()) . '.png'
+                    );
+                } elseif ($page = page($url)) {
                     $page->qrcode(option('bnomei.qrcode.field', []))->download(
-                        $page->slug() . '.png'
+                        $slug . '.png'
+                    );
+                } else {
+                    $options = array_merge(
+                        ['Text' => $url,],
+                        option('bnomei.qrcode.field', [])
+                    );
+                    site()->qrcode($options)->download(
+                        $slug . '.png'
                     );
                 }
             }

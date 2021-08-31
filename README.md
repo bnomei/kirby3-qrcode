@@ -77,7 +77,29 @@ Add the field to a blueprint. This will show the QRCode as PNG image and will tr
 **site/blueprints/default.yml**
 ```yml
 fields:
+  # current page
   qrcode: qrcode
+
+  qrcode2:
+    type: qrcode
+    title: Text below image
+
+  # title with query
+  qrcode3:
+    type: qrcode
+    title: "{{ page.title }}"
+
+  # custom url
+  qrcode4:
+    type: qrcode
+    title: Panel Url of {{ page.title }}
+    url: "{{ page.panelUrl }}"
+
+  # custom url and custom filename with |
+  qrcode4:
+    type: qrcode
+    title: Issue 7
+    url: "https://github.com/bnomei/kirby3-qrcode/issues/7|Issue 7"
 ```
 
 You can define the options for the field in your config file. Example:

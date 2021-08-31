@@ -1,8 +1,17 @@
 fields:
 
+  text:
+    type: text
+    help: help
+
   qrcode: qrcode
 
   manualqrcode:
     type: qrcode
     url: https://github.com/bnomei/kirby3-qrcode
     title: QRCode Repo
+
+  dynrcode:
+    type: qrcode
+    title: "Top {{ page.num }} / {{ page.siblings.listed.count }}"
+    url: "{{ site.find('flute').panelUrl }} | {{ site.find('flute').num }} - {{ site.find('flute').title }}" # an uri plus slug/filename
