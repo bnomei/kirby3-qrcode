@@ -1,0 +1,11 @@
+columns:
+  pagesa:
+    width: 1/2
+    sections:
+      pages:
+        type: pages
+  content:
+    width: 1/2
+    type: fields
+    fields:
+      qrcode: qrcode
