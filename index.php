@@ -5,12 +5,12 @@
 Kirby::plugin('bnomei/qrcode', [
     'options' => [
         'field' => [
-            /* EXAMPLE: */
+            /* EXAMPLE
             'foregroundColor' => new \Endroid\QrCode\Color\Color(126, 154, 191),
             'backgroundColor' => new \Endroid\QrCode\Color\Color(239, 239, 239),
             'size' => 128,
             'margin' => 0,
-            /* */
+            */
         ],
     ],
     'fields' => [
