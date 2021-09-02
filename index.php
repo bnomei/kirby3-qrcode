@@ -27,6 +27,10 @@ Kirby::plugin('bnomei/qrcode', [
                         if (strpos($url, "|") !== false) {
                             list($url, $slug) = explode("|", $url);
                         }
+                        if (Str::startsWith($url, "#")) {
+                            $ingredientKey = Str::replace($url, '#', '');
+                            $url = kirby()->urls()->$ingredientKey;
+                        }
                         if ($page = page($url)) {
                             $url = $page->url();
                             if (empty($slug)) {
