@@ -55,7 +55,7 @@ Kirby::plugin('bnomei/qrcode', [
 
                     $hash = \Bnomei\QRCode::hashForApiCall($url);
                     $options = array_merge(
-                        ['Text' => $url,],
+                        ['Text' => ($url === '$' ? site()->url() : $url),],
                         option('bnomei.qrcode.field', [])
                     );
                     $image = $this->model()
