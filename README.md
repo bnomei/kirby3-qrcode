@@ -56,7 +56,7 @@ echo $page->qrcode()->html(
 **site/templates/default.qr.php**
 ```php
 $page->qrcode()->download(
-    $page->slug() . '.svg'
+    $page->slug() . '.png'
 );
 ```
 
