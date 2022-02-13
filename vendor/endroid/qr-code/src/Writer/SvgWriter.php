@@ -40,7 +40,7 @@ final class SvgWriter implements WriterInterface
         $xml->addChild('defs');
 
         $blockDefinition = $xml->defs->addChild('rect');
-        $blockDefinition->addAttribute('id', $options[self::WRITER_OPTION_BLOCK_ID]);
+        $blockDefinition->addAttribute('id', strval($options[self::WRITER_OPTION_BLOCK_ID]));
         $blockDefinition->addAttribute('width', number_format($matrix->getBlockSize(), self::DECIMAL_PRECISION, '.', ''));
         $blockDefinition->addAttribute('height', number_format($matrix->getBlockSize(), self::DECIMAL_PRECISION, '.', ''));
         $blockDefinition->addAttribute('fill', '#'.sprintf('%02x%02x%02x', $qrCode->getForegroundColor()->getRed(), $qrCode->getForegroundColor()->getGreen(), $qrCode->getForegroundColor()->getBlue()));
@@ -65,7 +65,7 @@ final class SvgWriter implements WriterInterface
             }
         }
 
-        $result = new SvgResult($xml, $options[self::WRITER_OPTION_EXCLUDE_XML_DECLARATION]);
+        $result = new SvgResult($xml, boolval($options[self::WRITER_OPTION_EXCLUDE_XML_DECLARATION]));
 
         if ($logo instanceof LogoInterface) {
             $this->addLogo($logo, $result, $options);
@@ -98,10 +98,8 @@ final class SvgWriter implements WriterInterface
         $imageDefinition->addAttribute('height', strval($logoImageData->getHeight()));
         $imageDefinition->addAttribute('preserveAspectRatio', 'none');
 
-        // xlink:href is actually deprecated, but still required when placing the qr code in a pdf.
-        // SimpleXML strips out the xlink part by using addAttribute(), so it must be set directly.
         if ($options[self::WRITER_OPTION_FORCE_XLINK_HREF]) {
-            $imageDefinition['xlink:href'] = $logoImageData->createDataUri();
+            $imageDefinition->addAttribute('xlink:href', $logoImageData->createDataUri(), 'http://www.w3.org/1999/xlink');
         } else {
             $imageDefinition->addAttribute('href', $logoImageData->createDataUri());
         }

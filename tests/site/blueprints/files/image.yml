@@ -1,0 +1,10 @@
+title: My Image
+
+fields:
+
+  qrcode: qrcode
+
+  imgcode:
+    type: qrcode
+    title: "{{ file.name }} URL QRCode"
+    url: "{{ file.url }}"

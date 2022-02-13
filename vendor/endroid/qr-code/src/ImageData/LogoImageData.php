@@ -8,23 +8,15 @@ use Endroid\QrCode\Logo\LogoInterface;
 
 class LogoImageData
 {
-    /** @var string */
-    private $data;
+    private string $data;
 
     /** @var mixed */
     private $image;
 
-    /** @var string */
-    private $mimeType;
-
-    /** @var int */
-    private $width;
-
-    /** @var int */
-    private $height;
-
-    /** @var bool */
-    private $punchoutBackground;
+    private string $mimeType;
+    private int $width;
+    private int $height;
+    private bool $punchoutBackground;
 
     /** @param mixed $image */
     private function __construct(
@@ -100,6 +92,10 @@ class LogoImageData
     /** @return mixed */
     public function getImage()
     {
+        if (null === $this->image) {
+            throw new \Exception('SVG Images have no image resource');
+        }
+
         return $this->image;
     }
 
@@ -131,7 +127,7 @@ class LogoImageData
     private static function detectMimeTypeFromUrl(string $url): string
     {
         /** @var mixed $format */
-        $format = PHP_VERSION > 80000 ? true : 1;
+        $format = PHP_VERSION_ID >= 80000 ? true : 1;
 
         $headers = get_headers($url, $format);
 

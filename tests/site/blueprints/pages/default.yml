@@ -15,3 +15,7 @@ fields:
     type: qrcode
     title: "Top {{ page.num }} / {{ page.siblings.listed.count }}"
     url: "{{ site.find('flute').panelUrl }} | {{ site.find('flute').num }} - {{ site.find('flute').title }}" # an uri plus slug/filename
+
+  img:
+    type: files
+    uploads: image # template

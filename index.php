@@ -23,35 +23,48 @@ Kirby::plugin('bnomei/qrcode', [
                 },
                 'url' => function (?string $url = null) {
                     $slug = null;
-                    if ($url) {
-                        if (strpos($url, "|") !== false) {
-                            list($url, $slug) = explode("|", $url);
-                        }
-                        if (Str::startsWith($url, "#")) {
-                            $ingredientKey = Str::replace($url, '#', '');
-                            $url = kirby()->urls()->$ingredientKey;
-                        }
-                        if ($page = page($url)) {
-                            $url = $page->url();
-                            if (empty($slug)) {
-                                $slug = $page->slug();
-                            }
-                        }
-                        if (empty($slug)) {
-                            $slug = $url;
-                        }
-                        $slug = \Bnomei\QRCode::query($slug, $this->model());
-                        $slug = \Kirby\Toolkit\Str::slug($slug);
-                    } else {
+                    if (!$url) {
                         $model = $this->model();
-                        if (is_a($model, \Kirby\Cms\Site::class)) {
+                        if ($model instanceof \Kirby\Cms\Site) {
                             $url = "$";
                             $slug = \Kirby\Toolkit\Str::slug(site()->title());
+                        } elseif ($model instanceof \Kirby\Cms\File) {
+                            $url = $model->id();
                         } else {
-                            $url = $model->uri();
-                            $slug = $model->slug();
+                            $url = $model->uri(); // page object
+                        }
+                    } else {
+                        $url = \Bnomei\QRCode::query($url, $this->model());
+                    }
+
+                    if (strpos($url, "|") !== false) {
+                        list($url, $slug) = explode("|", $url);
+                    }
+
+                    if (Str::startsWith($url, "#")) {
+                        $ingredientKey = Str::replace($url, '#', '');
+                        $url = kirby()->urls()->$ingredientKey;
+                    }
+
+                    if ($page = page($url)) {
+                        $url = $page->url();
+                        if (empty($slug)) {
+                            $slug = $page->slug();
                         }
                     }
+
+                    if ($file = site()->file($url)) {
+                        $url = $file->url();
+                        if (empty($slug)) {
+                            $slug = $file->id();
+                        }
+                    }
+
+                    if (empty($slug)) {
+                        $slug = $url;
+                    }
+                    $slug = \Bnomei\QRCode::query($slug, $this->model());
+                    $slug = \Kirby\Toolkit\Str::slug($slug);
 
                     $hash = \Bnomei\QRCode::hashForApiCall($url);
                     $options = array_merge(
@@ -62,10 +75,11 @@ Kirby::plugin('bnomei/qrcode', [
                         ->qrcode($options)
                         ->html($slug . '.png');
                     $url = str_replace('/', '+S_L_A_S_H+', $url);
+
                     $api = implode('/', [
                         site()->url(),
                         'plugin-qrcode',
-                        urlencode($url),
+                        urlencode(trim($url, '/')),
                         $slug,
                         $hash
                     ]);
@@ -92,6 +106,10 @@ Kirby::plugin('bnomei/qrcode', [
                     $page->qrcode(option('bnomei.qrcode.field', []))->download(
                         $slug . '.png'
                     );
+                } elseif ($file = site()->file($slug)) {
+                    $file->qrcode(option('bnomei.qrcode.field', []))->download(
+                        Str::slug($file->filename()) . '.png'
+                    );
                 } else {
                     $options = array_merge(
                         ['Text' => $url,],
@@ -101,6 +119,7 @@ Kirby::plugin('bnomei/qrcode', [
                         $slug . '.png'
                     );
                 }
+                die;
             }
         ],
     ],

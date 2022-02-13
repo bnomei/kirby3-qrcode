@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Bnomei;
 
+use Kirby\Cms\Field;
 use Kirby\Cms\File;
 use Kirby\Cms\Html;
 use Kirby\Cms\Page;
@@ -29,8 +30,11 @@ final class QRCode
         $this->options = $options;
 
         $this->qrCode = \Endroid\QrCode\Builder\Builder::create();
-        
+
         $text = A::get($this->options, 'Text');
+        if ($text instanceof Field) {
+            $text = $text->value();
+        }
         $this->qrCode->data($text);
 
         foreach ($options as $option => $value) {

@@ -12,6 +12,7 @@ use Endroid\QrCode\Label\Alignment\LabelAlignmentRight;
 use Endroid\QrCode\Label\LabelInterface;
 use Endroid\QrCode\Logo\LogoInterface;
 use Endroid\QrCode\QrCodeInterface;
+use Endroid\QrCode\RoundBlockSizeMode\RoundBlockSizeModeNone;
 use Endroid\QrCode\Writer\Result\PngResult;
 use Endroid\QrCode\Writer\Result\ResultInterface;
 use Zxing\QrReader;
@@ -21,17 +22,17 @@ final class PngWriter implements WriterInterface, ValidatingWriterInterface
     public function write(QrCodeInterface $qrCode, LogoInterface $logo = null, LabelInterface $label = null, array $options = []): ResultInterface
     {
         if (!extension_loaded('gd')) {
-            throw new \Exception('Unable to generate image: check your GD installation');
+            throw new \Exception('Unable to generate image: please check if the GD extension is enabled and configured correctly');
         }
 
         $matrixFactory = new MatrixFactory();
         $matrix = $matrixFactory->create($qrCode);
 
-        $baseBlockSize = 50;
+        $baseBlockSize = $qrCode->getRoundBlockSizeMode() instanceof RoundBlockSizeModeNone ? 10 : intval($matrix->getBlockSize());
         $baseImage = imagecreatetruecolor($matrix->getBlockCount() * $baseBlockSize, $matrix->getBlockCount() * $baseBlockSize);
 
         if (!$baseImage) {
-            throw new \Exception('Unable to generate image: check your GD installation');
+            throw new \Exception('Unable to generate image: please check if the GD extension is enabled and configured correctly');
         }
 
         /** @var int $foregroundColor */
@@ -43,16 +44,10 @@ final class PngWriter implements WriterInterface, ValidatingWriterInterface
             $qrCode->getForegroundColor()->getAlpha()
         );
 
-        /** @var int $backgroundColor */
-        $backgroundColor = imagecolorallocatealpha(
-            $baseImage,
-            $qrCode->getBackgroundColor()->getRed(),
-            $qrCode->getBackgroundColor()->getGreen(),
-            $qrCode->getBackgroundColor()->getBlue(),
-            $qrCode->getBackgroundColor()->getAlpha()
-        );
+        /** @var int $transparentColor */
+        $transparentColor = imagecolorallocatealpha($baseImage, 255, 255, 255, 127);
 
-        imagefill($baseImage, 0, 0, $backgroundColor);
+        imagefill($baseImage, 0, 0, $transparentColor);
 
         for ($rowIndex = 0; $rowIndex < $matrix->getBlockCount(); ++$rowIndex) {
             for ($columnIndex = 0; $columnIndex < $matrix->getBlockCount(); ++$columnIndex) {
@@ -61,8 +56,8 @@ final class PngWriter implements WriterInterface, ValidatingWriterInterface
                         $baseImage,
                         $columnIndex * $baseBlockSize,
                         $rowIndex * $baseBlockSize,
-                        ($columnIndex + 1) * $baseBlockSize,
-                        ($rowIndex + 1) * $baseBlockSize,
+                        ($columnIndex + 1) * $baseBlockSize - 1,
+                        ($rowIndex + 1) * $baseBlockSize - 1,
                         $foregroundColor
                     );
                 }
@@ -80,7 +75,7 @@ final class PngWriter implements WriterInterface, ValidatingWriterInterface
         $targetImage = imagecreatetruecolor($targetWidth, $targetHeight);
 
         if (!$targetImage) {
-            throw new \Exception('Unable to generate image: check your GD installation');
+            throw new \Exception('Unable to generate image: please check if the GD extension is enabled and configured correctly');
         }
 
         /** @var int $backgroundColor */
