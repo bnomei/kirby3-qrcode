@@ -77,6 +77,8 @@ echo $page->qrcode([
 );
 ```
 
+> TIP: You could move that options array for frontend rendering into a config value or reuse the option('bnomei.qrcode.field') which defines the look inside the panel.
+
 ## Panel Field: Url of Page/File as QRCode
 
 Add the field to a blueprint. This will show the QRCode as PNG image and will trigger the download of the file on click.
@@ -109,14 +111,16 @@ fields:
     url: "https://github.com/bnomei/kirby3-qrcode/issues/7|Issue 7"
 ```
 
-You can define the options for the field in your config file. Example:
+You can define the options how the qrcode field shows the image **inside the panel** in your config file. Example:
 
 **site/config/config.php**
 ```php
 <?php
 
 return [
-    // other options
+    // other options...
+    
+    // set values for qrcode inside the panel
     'bnomei.qrcode.field' => [
         'foregroundColor' => new \Endroid\QrCode\Color\Color(126, 154, 191),
         'backgroundColor' => new \Endroid\QrCode\Color\Color(239, 239, 239),
@@ -124,6 +128,14 @@ return [
         'margin' => 0,
     ],
 ];
+```
+
+You can also reuse this in your frontend code like so:
+
+```php
+$page->qrcode(option('bnomei.qrcode.field', []))->download(
+    $page->slug() . '.png'
+);
 ```
 
 ## Dependencies

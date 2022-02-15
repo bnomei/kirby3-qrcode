@@ -1,6 +1,6 @@
 {
   "name": "kirby-field-qrcode",
-  "version": "2.0.3",
+  "version": "2.0.6",
   "description": "Kirby 3 Plugin QRCode",
   "author": "Bruno Meilick <b@bnomei.com>",
   "scripts": {
