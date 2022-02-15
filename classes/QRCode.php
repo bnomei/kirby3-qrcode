@@ -89,6 +89,7 @@ final class QRCode
             'name' => $name,
         ]);
         echo $result->getString();
+        die(); // needed to make content type work
         // @codeCoverageIgnoreEnd
     }
 
