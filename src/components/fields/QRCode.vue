@@ -23,6 +23,10 @@ export default {
   > div {
     line-height: 0;
     border: 1px solid #cccccc;
+
+    img {
+      width: 100%;
+    }
   }
   .figure-caption {
       text-align: center;
