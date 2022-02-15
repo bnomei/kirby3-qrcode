@@ -1,8 +1,8 @@
 <?php return array (
   'root' => 
   array (
-    'pretty_version' => '2.0.5',
-    'version' => '2.0.5.0',
+    'pretty_version' => '2.0.7',
+    'version' => '2.0.7.0',
     'aliases' => 
     array (
     ),
@@ -22,8 +22,8 @@
     ),
     'bnomei/kirby3-qrcode' => 
     array (
-      'pretty_version' => '2.0.5',
-      'version' => '2.0.5.0',
+      'pretty_version' => '2.0.7',
+      'version' => '2.0.7.0',
       'aliases' => 
       array (
       ),
