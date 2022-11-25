@@ -77,7 +77,7 @@ Kirby::plugin('bnomei/qrcode', [
                     $url = str_replace('/', '+S_L_A_S_H+', $url);
 
                     $api = implode('/', [
-                        site()->url(),
+                        kirby()->url(),
                         'plugin-qrcode',
                         urlencode(trim($url, '/')),
                         $slug,
