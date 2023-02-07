@@ -53,6 +53,17 @@ final class QRCodeTest extends TestCase
         $this->assertTrue(true);
     }
 
+    public function testSave()
+    {
+        $home = site()->homePage();
+        $this->assertNull($home->file('qrcode.png'));
+        $file = $home->qrcode([
+            'Text' => $this->text,
+        ])->save('qrcode.png');
+        $this->assertFileExists($file->root());
+        $file->delete(); // cleanup
+    }
+
     public function testAdvanced()
     {
         $qrcode = new QRCode([

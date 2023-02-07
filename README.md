@@ -51,6 +51,35 @@ echo $page->qrcode()->html(
 );
 ```
 
+### Save as File in Page Object
+
+When saving you can in addtion to the filename provide additional content data for the file or force an overwrite (which will change UUID and media hash) with additional function params. The logic will use the currently logged-in user or impersonate as `kirby` to create the file.
+
+**site/templates/default.qr.php**
+```php
+$qrcodeFilename = $page->slug() . '.png';
+$file = $page->file($qrcodeFilename);
+
+if (!$file) {
+    $file = $page->qrcode()->save(
+        $qrcodeFilename
+    );
+    
+    $file = $page->qrcode()->save(
+        $qrcodeFilename,
+        'myfiletemplate', // or null
+        [/* my content data array */],
+        true // force overwrite
+    );
+}
+
+echo $file; // outputs a img tag
+```
+
+> Why not overwrite file by default? Let's assume you want to send the qrcode by email. Then you do not want to overwrite later because that would change the media hash and break the URL to the image send within the email.
+
+> Could I not embed the qrcode inline using base-64 encoding? Technically yes, but almost no email clients would render it.
+
 ### Trigger download
 
 **site/templates/default.qr.php**

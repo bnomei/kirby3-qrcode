@@ -7,8 +7,10 @@ namespace Bnomei;
 use Kirby\Cms\Field;
 use Kirby\Cms\File;
 use Kirby\Cms\Html;
+use Kirby\Cms\ModelWithContent;
 use Kirby\Cms\Page;
 use Kirby\Cms\User;
+use Kirby\Filesystem\F;
 use Kirby\Http\Header;
 use Kirby\Toolkit\A;
 use Kirby\Toolkit\Str;
@@ -20,12 +22,14 @@ final class QRCode
 
     /** @var array */
     private $options;
+    /** @var ModelWithContent */
+    private $model;
 
     /**
      * QRCode constructor.
      * @param array $options
      */
-    public function __construct(array $options = [])
+    public function __construct(array $options = [], $model = null)
     {
         $this->options = $options;
 
@@ -43,6 +47,8 @@ final class QRCode
             }
             $this->qrCode->{$option}($value);
         }
+
+        $this->model = $model;
     }
 
     /**
@@ -91,6 +97,34 @@ final class QRCode
         echo $result->getString();
         die(); // needed to make content type work
         // @codeCoverageIgnoreEnd
+    }
+
+    public function save(string $name, ?string $template = null, array $content = [], bool $force = false): File
+    {
+        $extension = ucfirst(pathinfo($name, PATHINFO_EXTENSION));
+        $class = 'Endroid\\QrCode\\Writer\\' . $extension . 'Writer';
+        $this->qrCode->writer(new $class());
+
+        $result = $this->qrCode->build();
+        $parent = $this->model instanceof File ? $this->model->parent() : $this->model;
+        $filepath = $parent->root() . '/' . F::safeName($name);
+
+        if (F::exists($filepath) && $force) {
+            $parent->file(F::safeName($name))->delete();
+        }
+        if (F::exists($filepath) && !$force) {
+            throw new \Exception("File '$filepath' exists. Use `force` param to overwrite. An overwrite will change Kirbys UUID and media URL.");
+        }
+        $filepathTMP = tempnam(sys_get_temp_dir(), md5($name));
+        $result->saveToFile($filepathTMP);
+
+        kirby()->impersonate(kirby()->users()->current()->id() ?? 'kirby');
+        return $parent->createFile([
+            'source'   => $filepathTMP,
+            'filename' => $name,
+            'template' => $template,
+            'content'  => $content,
+        ], move: true); // will delete file
     }
 
     /**

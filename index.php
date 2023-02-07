@@ -127,21 +127,21 @@ Kirby::plugin('bnomei/qrcode', [
         'qrcode' => function (array $options = []) {
             return new \Bnomei\QRCode(array_merge([
                 'Text' => site()->url(),
-            ], $options));
+            ], $options), $this);
         },
     ],
     'pageMethods' => [
         'qrcode' => function (array $options = []) {
             return new \Bnomei\QRCode(array_merge([
                 'Text' => $this->url(),
-            ], $options));
+            ], $options), $this);
         },
     ],
     'fileMethods' => [
         'qrcode' => function (array $options = []) {
             return new \Bnomei\QRCode(array_merge([
                 'Text' => $this->url(),
-            ], $options));
+            ], $options), $this);
         },
     ],
   ]);
