@@ -55,16 +55,18 @@ echo $page->qrcode()->html(
 
 When saving you can in addtion to the filename provide additional content data for the file or force an overwrite (which will change UUID and media hash) with additional function params. The logic will use the currently logged-in user or impersonate as `kirby` to create the file.
 
-**site/templates/default.qr.php**
+**site/templates/default.php**
 ```php
 $qrcodeFilename = $page->slug() . '.png';
 $file = $page->file($qrcodeFilename);
 
 if (!$file) {
+    // short version
     $file = $page->qrcode()->save(
         $qrcodeFilename
     );
     
+    // with all params
     $file = $page->qrcode()->save(
         $qrcodeFilename,
         'myfiletemplate', // or null
