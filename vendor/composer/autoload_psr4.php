@@ -7,6 +7,7 @@ $baseDir = dirname($vendorDir);
 
 return array(
     'Whoops\\' => array($vendorDir . '/filp/whoops/src/Whoops'),
+    'Symfony\\Polyfill\\Php81\\' => array($vendorDir . '/symfony/polyfill-php81'),
     'Symfony\\Polyfill\\Mbstring\\' => array($vendorDir . '/symfony/polyfill-mbstring'),
     'Symfony\\Polyfill\\Intl\\Normalizer\\' => array($vendorDir . '/symfony/polyfill-intl-normalizer'),
     'Symfony\\Polyfill\\Intl\\Idn\\' => array($vendorDir . '/symfony/polyfill-intl-idn'),
@@ -27,7 +28,7 @@ return array(
     'PhpCoveralls\\' => array($vendorDir . '/php-coveralls/php-coveralls/src'),
     'PHPMailer\\PHPMailer\\' => array($vendorDir . '/phpmailer/phpmailer/src'),
     'Laminas\\Escaper\\' => array($vendorDir . '/laminas/laminas-escaper/src'),
-    'Kirby\\' => array($vendorDir . '/getkirby/composer-installer/src', $baseDir . '/tests/kirby/src'),
+    'Kirby\\' => array($baseDir . '/tests/kirby/src', $vendorDir . '/getkirby/composer-installer/src'),
     'GuzzleHttp\\Psr7\\' => array($vendorDir . '/guzzlehttp/psr7/src'),
     'GuzzleHttp\\Promise\\' => array($vendorDir . '/guzzlehttp/promises/src'),
     'GuzzleHttp\\' => array($vendorDir . '/guzzlehttp/guzzle/src'),
