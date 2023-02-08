@@ -99,7 +99,7 @@ echo $page->qrcode([
     'margin' => 10,
     'encoding' => 'UTF-8',
     'foregroundColor' => new \Endroid\QrCode\Color\Color(0, 0, 0),
-    'fackgroundColor' => new \Endroid\QrCode\Color\Color(255, 255, 255),
+    'backgroundColor' => new \Endroid\QrCode\Color\Color(255, 255, 255),
     'labelText' => 'Scan the code',
     'logoPath' => __DIR__.'/../assets/images/getkirby.png',
     'size' => 200,
@@ -133,7 +133,7 @@ fields:
   qrcode4:
     type: qrcode
     title: Panel Url of {{ page.title }}
-    url: "{{ page.panelUrl }}"
+    url: "{{ page.panel.url }}"
 
   # custom url and custom filename with |
   qrcode4:
