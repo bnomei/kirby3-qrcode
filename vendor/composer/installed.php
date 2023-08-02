@@ -1,8 +1,8 @@
 <?php return array(
     'root' => array(
         'name' => 'bnomei/kirby3-qrcode',
-        'pretty_version' => '2.1.1',
-        'version' => '2.1.1.0',
+        'pretty_version' => '2.1.2',
+        'version' => '2.1.2.0',
         'reference' => NULL,
         'type' => 'kirby-plugin',
         'install_path' => __DIR__ . '/../../',
@@ -20,8 +20,8 @@
             'dev_requirement' => false,
         ),
         'bnomei/kirby3-qrcode' => array(
-            'pretty_version' => '2.1.1',
-            'version' => '2.1.1.0',
+            'pretty_version' => '2.1.2',
+            'version' => '2.1.2.0',
             'reference' => NULL,
             'type' => 'kirby-plugin',
             'install_path' => __DIR__ . '/../../',
@@ -38,9 +38,9 @@
             'dev_requirement' => false,
         ),
         'endroid/qr-code' => array(
-            'pretty_version' => '4.8.1',
-            'version' => '4.8.1.0',
-            'reference' => '652157aee43d919be36cf2100a5a25b0882462f7',
+            'pretty_version' => '4.8.2',
+            'version' => '4.8.2.0',
+            'reference' => '2436c2333a3931c95e2b96eb82f16f53143d6bba',
             'type' => 'library',
             'install_path' => __DIR__ . '/../endroid/qr-code',
             'aliases' => array(),
