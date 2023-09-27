@@ -1,8 +1,8 @@
 <?php return array(
     'root' => array(
         'name' => 'bnomei/kirby3-qrcode',
-        'pretty_version' => '2.1.2',
-        'version' => '2.1.2.0',
+        'pretty_version' => '2.2.0',
+        'version' => '2.2.0.0',
         'reference' => NULL,
         'type' => 'kirby-plugin',
         'install_path' => __DIR__ . '/../../',
@@ -20,8 +20,8 @@
             'dev_requirement' => false,
         ),
         'bnomei/kirby3-qrcode' => array(
-            'pretty_version' => '2.1.2',
-            'version' => '2.1.2.0',
+            'pretty_version' => '2.2.0',
+            'version' => '2.2.0.0',
             'reference' => NULL,
             'type' => 'kirby-plugin',
             'install_path' => __DIR__ . '/../../',
