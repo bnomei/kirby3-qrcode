@@ -37,7 +37,7 @@ Generate QRCodes easily. The included Panel-Field will show the QRCode and trigg
 $qrcodeObject = new \Bnomei\QRCode([
     'Text' => 'https://github.com/bnomei/kirby3-qrcode',
 ]);
-echo $qrcodeObject->html();
+echo $qrcodeObject->html('qrcode-plugin.png');
 ```
 
 ### Page Method
